@@ -1,8 +1,8 @@
 from langchain_community.vectorstores import FAISS
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
-from medical_embeddings import generate_medical_embeddings
-# from RAG.medical_embeddings import generate_medical_embeddings
+# from medical_embeddings import generate_medical_embeddings
+from RAG.medical_embeddings import generate_medical_embeddings
 
 
 def get_vector_store_2():

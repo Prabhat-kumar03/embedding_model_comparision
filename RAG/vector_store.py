@@ -1,8 +1,8 @@
 from langchain_community.vectorstores import FAISS
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
-# from RAG.embeddings import generate_embeddings
-from embeddings import generate_embeddings
+from RAG.embeddings import generate_embeddings
+# from embeddings import generate_embeddings
 
 
 def get_vector_store():
