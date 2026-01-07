@@ -2,7 +2,7 @@ import numpy as np
 from extract_pdf import extract_pdf
 from text_splitter import text_splitter
 
-from medical_embeddings import generate_medical_embeddings
+from umlsBERT_encoder import generate_umlsbert_embeddings
 
 def cosine_distance(vec1, vec2):
     vec1 = np.array(vec1)
@@ -21,7 +21,7 @@ pdf2_data = extract_pdf("patient2_oral_cancer.pdf")
 chunks_array_1 = text_splitter(pdf1_data)
 chunks_array_2 = text_splitter(pdf2_data)
 
-embeddings = generate_medical_embeddings()
+embeddings = generate_umlsbert_embeddings()
 pdf1_vectors = [embeddings.embed_query(chunk.page_content) for chunk in chunks_array_1]
 pdf2_vectors = [embeddings.embed_query(chunk.page_content) for chunk in chunks_array_2]
 

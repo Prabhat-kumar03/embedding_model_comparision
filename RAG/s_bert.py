@@ -1,8 +1,13 @@
+from langchain_huggingface import HuggingFaceEmbeddings
 import numpy as np
 from extract_pdf import extract_pdf
 from text_splitter import text_splitter
 
-from medical_embeddings import generate_medical_embeddings
+embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/embeddinggemma-300m-medical",
+        model_kwargs={"device": "cpu"},  # change to "cuda" if GPU is available
+        encode_kwargs={"normalize_embeddings": True}  # normalized vectors for better similarity
+    )
 
 def cosine_distance(vec1, vec2):
     vec1 = np.array(vec1)
@@ -21,7 +26,6 @@ pdf2_data = extract_pdf("patient2_oral_cancer.pdf")
 chunks_array_1 = text_splitter(pdf1_data)
 chunks_array_2 = text_splitter(pdf2_data)
 
-embeddings = generate_medical_embeddings()
 pdf1_vectors = [embeddings.embed_query(chunk.page_content) for chunk in chunks_array_1]
 pdf2_vectors = [embeddings.embed_query(chunk.page_content) for chunk in chunks_array_2]
 

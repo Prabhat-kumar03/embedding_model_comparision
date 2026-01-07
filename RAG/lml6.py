@@ -15,8 +15,8 @@ def cosine_distance(vec1, vec2):
     return 1 - cosine_similarity
 
 
-pdf1_data = extract_pdf("patient_type1_diabetes.pdf")
-pdf2_data = extract_pdf("patient_type2_diabetes.pdf")
+pdf1_data = extract_pdf("patient1_blood_cancer.pdf")
+pdf2_data = extract_pdf("patient2_oral_cancer.pdf")
 
 chunks_array_1 = text_splitter(pdf1_data)
 chunks_array_2 = text_splitter(pdf2_data)
